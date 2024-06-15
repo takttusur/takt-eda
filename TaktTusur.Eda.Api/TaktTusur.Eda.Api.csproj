@@ -17,4 +17,9 @@
         </Content>
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\TaktTusur.Eda.DataAccess\TaktTusur.Eda.DataAccess.csproj"/>
+        <ProjectReference Include="..\TaktTusur.Eda.Domain\TaktTusur.Eda.Domain.csproj"/>
+    </ItemGroup>
+
 </Project>
