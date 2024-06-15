@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaktTusur.Eda.PlanWorker", "TaktTusur.Eda.PlanWorker\TaktTusur.Eda.PlanWorker.csproj", "{C0A7FA1A-FE62-4161-979C-6CE351B52563}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaktTusur.Eda.MealPlanProcessor", "TaktTusur.Eda.MealPlanProcessor\TaktTusur.Eda.MealPlanProcessor.csproj", "{C0A7FA1A-FE62-4161-979C-6CE351B52563}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

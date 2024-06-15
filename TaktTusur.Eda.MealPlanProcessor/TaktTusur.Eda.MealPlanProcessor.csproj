@@ -7,6 +7,7 @@
         <UserSecretsId>dotnet-TaktTusur.Eda.PlanWorker-1DEE8BC0-9527-4EC5-B5D6-403707694C77</UserSecretsId>
         <NoDefaultLaunchSettingsFile>True</NoDefaultLaunchSettingsFile>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <RootNamespace>TaktTusur.Eda.PlanWorker</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
