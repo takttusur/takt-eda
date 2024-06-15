@@ -1,13 +1,37 @@
+using TaktTusur.Eda.Domain.Base;
+
 namespace TaktTusur.Eda.Domain.Recipe;
 
 public class RecipeIngredient : Entity
 {
-	public Ingredient Ingredient { get; set; }
+	protected RecipeIngredient(Ingredient ingredient, MeasurementUnit units, decimal amountPerPerson)
+	{
+		Ingredient = ingredient;
+		Units = units;
+		AmountPerPerson = amountPerPerson;
+	}
 
-	public MeasurementUnit Units { get; set; }
+	/// <summary>
+	/// Ingredient. Part of dish.
+	/// </summary>
+	public Ingredient Ingredient { get; protected set; }
+
+	/// <summary>
+	/// Measurement units for ingredient.
+	/// </summary>
+	public MeasurementUnit Units { get; protected set; }
 
 	/// <summary>
 	/// Amout of ingredient to cook the meal for one person.
 	/// </summary>
-	public decimal AmountPerPerson { get; set; }
+	public decimal AmountPerPerson { get; protected set; }
+
+	public static RecipeIngredient Create(Ingredient ingredient, MeasurementUnit measurementUnit,
+		decimal amountPerPerson)
+	{
+		if (amountPerPerson <= 0)
+			throw new EntityValidationException(nameof(AmountPerPerson), "should have positive value");
+
+		return new RecipeIngredient(ingredient, measurementUnit, amountPerPerson);
+	}
 }

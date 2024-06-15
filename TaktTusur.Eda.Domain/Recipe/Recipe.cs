@@ -1,3 +1,5 @@
+using TaktTusur.Eda.Domain.Base;
+
 namespace TaktTusur.Eda.Domain.Recipe;
 
 /// <summary>
@@ -5,29 +7,55 @@ namespace TaktTusur.Eda.Domain.Recipe;
 /// </summary>
 public class Recipe : Entity
 {
+	private readonly List<RecipeIngredient> _ingredients;
+
+	protected Recipe(string name, List<RecipeIngredient> ingredients,
+		int timeToCookInSeconds, int timeToPrepareInSeconds, string cookingGuideText)
+	{
+		Name = name;
+		_ingredients = ingredients;
+		TimeToCookInSeconds = timeToCookInSeconds;
+		TimeToPrepareInSeconds = timeToPrepareInSeconds;
+		CookingGuideText = cookingGuideText;
+	}
+
 	/// <summary>
 	/// Name of dish.
 	/// </summary>
 	/// <example>Veal ribs, chicken soup.</example>
-	public string Name { get; set; }
+	public string Name { get; protected set; }
 
 	/// <summary>
 	/// Ingredients. All measurements should be for one person.
 	/// </summary>
-	public IReadOnlyCollection<RecipeIngredient> Ingredients { get; set; }
+	public IReadOnlyCollection<RecipeIngredient> Ingredients => _ingredients;
 
 	/// <summary>
 	/// How much time needed to prepare ingredients for this recipe in seconds.
 	/// </summary>
-	public int TimeToPrepareInSeconds { get; set; }
+	public int TimeToPrepareInSeconds { get; protected set; }
 
 	/// <summary>
 	/// Cooking time, when we have prepaired ingredients in seconds.
 	/// </summary>
-	public int TimeToCookInSeconds { get; set; }
+	public int TimeToCookInSeconds { get; protected set; }
 
 	/// <summary>
 	/// Description, how to prepare and cook the meal.
 	/// </summary>
-	public string CookingGuideText { get; set; }
+	public string CookingGuideText { get; protected set; }
+
+	public static Recipe Create(string name, int timeToPrepareInSeconds = 0, int timeToCookInSeconds = 0,
+		string cookingGuideText = "", IEnumerable<RecipeIngredient>? ingredients = null)
+	{
+		if (string.IsNullOrWhiteSpace(name))
+			throw new EntityValidationException(nameof(Name), "cannot be empty");
+
+		var recipeIngredients = ingredients as RecipeIngredient[] ?? ingredients?.ToArray();
+		var ingredientsList = recipeIngredients.Any()
+			? new List<RecipeIngredient>(recipeIngredients)
+			: [];
+
+		return new Recipe(name, ingredientsList, timeToCookInSeconds, timeToPrepareInSeconds, cookingGuideText);
+	}
 }

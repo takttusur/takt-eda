@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+        <Folder Include="MealPlan\Queries\"/>
+        <Folder Include="Recipe\Commands\"/>
+    </ItemGroup>
+
 </Project>
