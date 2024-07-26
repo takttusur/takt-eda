@@ -1,5 +1,7 @@
+using MediatR;
+
 namespace TaktTusur.Eda.Domain.Recipe.Queries;
 
-public class GetRecipeListQuery
+public class GetRecipeListQuery : IRequest<GetRecipeListQueryResult>
 {
 }
