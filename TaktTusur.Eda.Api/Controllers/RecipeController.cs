@@ -14,7 +14,7 @@ public class RecipeController : ControllerBase
 	}
 
 	[HttpGet("{id:long}")]
-	public Recipe Get(long id)
+	public FullRecipeDto Get(long id)
 	{
 	}
 }
