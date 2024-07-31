@@ -1,12 +1,10 @@
 ﻿services:
-  takttusur.eda.api:
-    image: takttusur.eda.api
-    build:
-      context: .
-      dockerfile: TaktTusur.Eda.Api/Dockerfile
-
-  takttusur.eda.planworker:
-    image: takttusur.eda.planworker
-    build:
-      context: .
-      dockerfile: TaktTusur.Eda.PlanWorker/Dockerfile
+  takttusur.eda.pgsql:
+    image: postgres
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: eda
+      POSTGRES_USER: eda
+      POSTGRES_DB: eda
+    ports:
+      - 5432:5432

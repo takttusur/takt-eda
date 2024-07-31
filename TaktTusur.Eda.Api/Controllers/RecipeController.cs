@@ -11,10 +11,12 @@ public class RecipeController : ControllerBase
 	[HttpGet]
 	public GetRecipeListQueryResult Get(int skip, int take)
 	{
+		return null;
 	}
 
 	[HttpGet("{id:long}")]
 	public FullRecipeDto Get(long id)
 	{
+		return null;
 	}
 }

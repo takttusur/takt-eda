@@ -14,5 +14,6 @@ public class GetRecipeListQueryHandler : IRequestHandler<GetRecipeListQuery, Get
 	public Task<GetRecipeListQueryResult> Handle(GetRecipeListQuery request, CancellationToken cancellationToken)
 	{
 		// GetAll From repository and filter it
+		throw new NotImplementedException();
 	}
 }
