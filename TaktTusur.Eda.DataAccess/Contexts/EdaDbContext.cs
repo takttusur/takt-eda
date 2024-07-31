@@ -10,4 +10,16 @@ public class EdaDbContext : DbContext
 	}
 
 	public DbSet<MeasurementUnit> MeasurementUnits { get; protected set; }
+
+	protected override void OnModelCreating(ModelBuilder modelBuilder)
+	{
+		var measurementUnit = modelBuilder.Entity<MeasurementUnit>();
+		measurementUnit.ToTable("MeasurementUnits");
+		measurementUnit.Property(p => p.Id)
+			.IsRequired()
+			.HasColumnName("id");
+		measurementUnit.Property(p => p.Name)
+			.IsRequired()
+			.HasColumnName("name");
+	}
 }

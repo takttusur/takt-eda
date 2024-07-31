@@ -8,3 +8,5 @@
       POSTGRES_DB: eda
     ports:
       - 5432:5432
+    volumes:
+      - ./DatabaseScripts:/docker-entrypoint-initdb.d
