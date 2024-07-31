@@ -9,7 +9,7 @@ namespace TaktTusur.Eda.Api.Controllers;
 /// <summary>
 /// Manage meal plans(create, change, view).
 /// </summary>
-public class MealPlanController(IMediator mediator) : ControllerBase
+public class MealPlanController(MediatR.IMediator mediator) : ControllerBase
 {
 	/// <summary>
 	/// Schedule a generate meal plan task with parameters.

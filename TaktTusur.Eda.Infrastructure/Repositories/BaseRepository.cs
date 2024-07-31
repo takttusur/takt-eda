@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TaktTusur.Eda.Domain.Base;
 
-namespace TaktTusur.Eda.DataAccess.Repositories;
+namespace TaktTusur.Eda.Infrastructure.Repositories;
 
 public abstract class BaseRepository<T>(DbContext dbContext) : IRepository<T>
 	where T : Entity

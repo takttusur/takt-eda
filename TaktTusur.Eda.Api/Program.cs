@@ -1,25 +1,21 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration.Json;
-using TaktTusur.Eda.DataAccess.Contexts;
-using TaktTusur.Eda.DataAccess.Repositories;
+using TaktTusur.Eda.Application.Mappings;
+using TaktTusur.Eda.Application.Services;
+using TaktTusur.Eda.Infrastructure.Contexts;
+using TaktTusur.Eda.Infrastructure.Repositories;
 using TaktTusur.Eda.Domain.Recipe;
 
 var builder = WebApplication.CreateBuilder(args);
-
-if (builder.Environment.IsDevelopment())
-{
-	builder.Configuration.Sources.Add(new JsonConfigurationSource()
-	{
-		Path = Path.Combine("Configurations", "appsettings.development.json")
-	});
-}
 
 builder.Services.AddDbContext<EdaDbContext>(options =>
 {
 	options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(EdaDbContext)));
 });
 
-builder.Services.AddScoped<IMeasurementUnitRepository, MeasurementUnitRepository>();
+builder.Services.AddScoped<IMeasurementUnitsRepository, MeasurementUnitsesRepository>();
+builder.Services.AddScoped<IMeasurementUnitsService, MeasurementUnitsService>();
+builder.Services.AddAutoMapper(config => { config.AddProfile<MeasurementUnitsProfile>(); });
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

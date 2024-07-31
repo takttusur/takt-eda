@@ -11,7 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaktTusur.Eda.MealPlanProce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaktTusur.Eda.Domain", "TaktTusur.Eda.Domain\TaktTusur.Eda.Domain.csproj", "{3D4D8D8C-E553-4876-B9F8-DECCACA23DFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaktTusur.Eda.DataAccess", "TaktTusur.Eda.DataAccess\TaktTusur.Eda.DataAccess.csproj", "{DB4AA890-1BC0-4D08-B10A-7497034AAAD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaktTusur.Eda.Infrastructure", "TaktTusur.Eda.Infrastructure\TaktTusur.Eda.Infrastructure.csproj", "{DB4AA890-1BC0-4D08-B10A-7497034AAAD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaktTusur.Eda.Application", "TaktTusur.Eda.Application\TaktTusur.Eda.Application.csproj", "{DEE30435-AF2D-4968-8601-46AF649FC51E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{DB4AA890-1BC0-4D08-B10A-7497034AAAD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB4AA890-1BC0-4D08-B10A-7497034AAAD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB4AA890-1BC0-4D08-B10A-7497034AAAD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEE30435-AF2D-4968-8601-46AF649FC51E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEE30435-AF2D-4968-8601-46AF649FC51E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEE30435-AF2D-4968-8601-46AF649FC51E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEE30435-AF2D-4968-8601-46AF649FC51E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

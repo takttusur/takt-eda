@@ -20,8 +20,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\TaktTusur.Eda.DataAccess\TaktTusur.Eda.DataAccess.csproj"/>
+        <ProjectReference Include="..\TaktTusur.Eda.Application\TaktTusur.Eda.Application.csproj"/>
+        <ProjectReference Include="..\TaktTusur.Eda.Infrastructure\TaktTusur.Eda.Infrastructure.csproj"/>
         <ProjectReference Include="..\TaktTusur.Eda.Domain\TaktTusur.Eda.Domain.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="Configurations\appsettings.development.json"/>
     </ItemGroup>
 
 </Project>

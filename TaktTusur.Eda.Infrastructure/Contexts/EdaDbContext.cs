@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TaktTusur.Eda.Domain.Recipe;
 
-namespace TaktTusur.Eda.DataAccess.Contexts;
+namespace TaktTusur.Eda.Infrastructure.Contexts;
 
 public class EdaDbContext : DbContext
 {
