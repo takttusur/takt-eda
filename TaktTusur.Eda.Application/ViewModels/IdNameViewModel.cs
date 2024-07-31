@@ -1,6 +1,6 @@
 namespace TaktTusur.Eda.Application.ViewModels;
 
-public class MeasurementUnitViewModel
+public class IdNameViewModel
 {
 	public long Id { get; set; }
 

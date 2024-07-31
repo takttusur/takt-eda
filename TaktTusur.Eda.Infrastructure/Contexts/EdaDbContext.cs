@@ -11,14 +11,27 @@ public class EdaDbContext : DbContext
 
 	public DbSet<MeasurementUnit> MeasurementUnits { get; protected set; }
 
+	public DbSet<Ingredient> Ingredients { get; protected set; }
+
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
-		var measurementUnit = modelBuilder.Entity<MeasurementUnit>();
-		measurementUnit.ToTable("MeasurementUnits");
-		measurementUnit.Property(p => p.Id)
+		var measurementUnits = modelBuilder.Entity<MeasurementUnit>();
+		measurementUnits.ToTable("MeasurementUnits")
+			.HasKey(x => x.Id);
+		measurementUnits.Property(p => p.Id)
 			.IsRequired()
 			.HasColumnName("id");
-		measurementUnit.Property(p => p.Name)
+		measurementUnits.Property(p => p.Name)
+			.IsRequired()
+			.HasColumnName("name");
+
+		var ingredients = modelBuilder.Entity<Ingredient>();
+		ingredients.ToTable("Ingredients")
+			.HasKey(x => x.Id);
+		ingredients.Property(x => x.Id)
+			.IsRequired()
+			.HasColumnName("id");
+		ingredients.Property(x => x.Name)
 			.IsRequired()
 			.HasColumnName("name");
 	}

@@ -4,10 +4,10 @@ using TaktTusur.Eda.Domain.Recipe;
 
 namespace TaktTusur.Eda.Application.MappingProfiles;
 
-public class MeasurementUnitsProfile : Profile
+public class IngredientsProfile : Profile
 {
-	public MeasurementUnitsProfile()
+	public IngredientsProfile()
 	{
-		CreateMap<MeasurementUnit, IdNameViewModel>();
+		CreateMap<Ingredient, IdNameViewModel>();
 	}
 }

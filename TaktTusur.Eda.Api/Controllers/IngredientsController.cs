@@ -8,11 +8,11 @@ namespace TaktTusur.Eda.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class MeasurementUnitController(IMeasurementUnitsService service) : ControllerBase
+public class IngredientsController(IIngredientsService ingredientsService) : ControllerBase
 {
 	[HttpGet]
 	public PageViewModel<IdNameViewModel> Get(int skip = 0, int take = 10)
 	{
-		return service.GetPage(skip, take);
+		return ingredientsService.GetPage(skip, take);
 	}
 }

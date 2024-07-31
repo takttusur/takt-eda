@@ -4,6 +4,6 @@ using TaktTusur.Eda.Domain.Recipe;
 
 namespace TaktTusur.Eda.Application.Services;
 
-public interface IMeasurementUnitsService : IHasPaging<MeasurementUnit, IdNameViewModel>
+public interface IIngredientsService : IHasPaging<Ingredient, IdNameViewModel>
 {
 }
