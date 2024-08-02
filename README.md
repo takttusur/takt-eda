@@ -1,5 +1,23 @@
 # Meal plan for short trips service
 
+## Development
+
+This solution contains `docker-compose.yml` file with PostgreSQL DB. While first run it starts migration scripts
+from `DatabaseScripts`
+
+Start PostgreSQL container for development:
+
+```shell
+docker-compose up
+```
+
+If you have changes in migration scripts to apply it automatically you have to remove current development DB.
+You can remove the container and the volume manually, or you can remove all unused containers and volumes on your PC:
+
+```shell
+docker system prune
+docker volumes prune
+```
 
 ## Architecture decisions
 
