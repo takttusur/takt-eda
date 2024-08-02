@@ -34,5 +34,23 @@ public class EdaDbContext : DbContext
 		ingredients.Property(x => x.Name)
 			.IsRequired()
 			.HasColumnName("name");
+
+		var recipes = modelBuilder.Entity<Recipe>();
+		recipes.ToTable("Recipes")
+			.HasKey(x => x.Id);
+		recipes.Property(x => x.Id)
+			.IsRequired()
+			.HasColumnName("id");
+		recipes.Property(x => x.Name)
+			.IsRequired()
+			.HasColumnName("name");
+		recipes.Property(x => x.TimeToCookInSeconds)
+			.IsRequired()
+			.HasColumnName("time_to_prepare_sec");
+		recipes.Property(x => x.TimeToPrepareInSeconds)
+			.IsRequired()
+			.HasColumnName("time_to_cook_sec");
+		recipes.Property(x => x.CookingGuideText)
+			.HasColumnName("cooking_guide_text");
 	}
 }

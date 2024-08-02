@@ -1,10 +1,10 @@
-namespace TaktTusur.Eda.Domain.MealPlan;
+namespace TaktTusur.Eda.Domain.Recipe;
 
 public enum EatingTime
 {
-	Breakfast,
-	MorningCoffebreak,
-	Lunch,
-	EveningCoffebreak,
-	Dinner
+	Breakfast = 0,
+	MorningCoffebreak = 1,
+	Lunch = 2,
+	EveningCoffebreak = 3,
+	Dinner = 4
 }

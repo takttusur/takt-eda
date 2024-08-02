@@ -23,7 +23,7 @@ public class ValuesDictionaryService(
 
 	private PageViewModel<IdNameViewModel> GetByData<T>(IRepository<T> repository, int skip, int take) where T : Entity
 	{
-		var data = repository.GetAll().Skip(skip).Take(take);
+		var data = repository.GetAll().OrderBy(x => x.Id).Skip(skip).Take(take);
 		var totalCount = repository.GetAll().Count();
 		var measurementUnitViewModels = mapper.Map<List<IdNameViewModel>>(data);
 		var pageViewModel = new PageViewModel<IdNameViewModel>

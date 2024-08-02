@@ -46,5 +46,25 @@ DO $$
                    (7, 'масло сливочное');
         END IF;
 
+        IF NOT EXISTS (SELECT
+                       FROM pg_catalog.pg_tables
+                       WHERE schemaname = 'public'
+                         AND tablename = 'Recipes')
+        THEN
+            CREATE TABLE public."Recipes"
+            (
+                id                  bigint  NOT NULL,
+                name                text    NOT NULL,
+                time_to_prepare_sec integer NOT NULL DEFAULT 0,
+                time_to_cook_sec    integer NOT NULL DEFAULT 0,
+                cooking_guide       text,
+                PRIMARY KEY (id),
+                CONSTRAINT recipe_name_unique UNIQUE (name)
+            );
+
+            ALTER TABLE public."Recipes"
+                OWNER TO CURRENT_USER;
+        END IF;
+
 
     END $$;
