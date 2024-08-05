@@ -50,7 +50,5 @@ public class EdaDbContext : DbContext
 		recipes.Property(x => x.TimeToPrepareInSeconds)
 			.IsRequired()
 			.HasColumnName("time_to_cook_sec");
-		recipes.Property(x => x.CookingGuideText)
-			.HasColumnName("cooking_guide_text");
 	}
 }
