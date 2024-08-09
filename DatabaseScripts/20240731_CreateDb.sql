@@ -66,6 +66,14 @@ DO $$
 
             ALTER TABLE public."Recipes"
                 OWNER TO CURRENT_USER;
+
+            INSERT INTO public."Recipes" (id, name, time_to_prepare_sec, time_to_cook_sec, cooking_guide)
+            VALUES (0, 'сырный суп с курицей', 1800, 3600,
+                    'Подготовить зажарку и вареную курицу. Вскипятить воду, добавить нарезаный картофель, курицу, зажарку. Варить 30 минут.'),
+                   (1, 'гречневая каша', 1800, 1800,
+                    'Подготовить зажарку. Вскипятить воду, в воду добавить гречку, варить до готовности, после добавить зажарку');
+
+
         END IF;
 
         IF NOT EXISTS (SELECT
@@ -101,6 +109,16 @@ DO $$
 
             ALTER TABLE IF EXISTS public."RecipesIngredients"
                 OWNER to CURRENT_USER;
+
+            INSERT INTO public."RecipesIngredients" (id, recipe_id, ingredient_id, measurement_units_id, amount_per_person)
+            VALUES (0, 0, 0, 0, 50),
+                   (1, 0, 3, 0, 100),
+                   (2, 0, 4, 0, 20),
+                   (3, 0, 5, 0, 20),
+                   (4, 1, 4, 0, 50),
+                   (4, 1, 5, 0, 50),
+                   (4, 1, 7, 0, 10);
+
 
         END IF;
 
