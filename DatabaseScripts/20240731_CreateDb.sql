@@ -60,6 +60,7 @@ DO $$
                 time_to_prepare_sec integer NOT NULL DEFAULT 0,
                 time_to_cook_sec    integer NOT NULL DEFAULT 0,
                 cooking_guide       text,
+                revision bigint NOT NULL DEFAULT 0,
                 PRIMARY KEY (id),
                 CONSTRAINT recipe_name_unique UNIQUE (name)
             );

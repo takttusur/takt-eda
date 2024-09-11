@@ -57,6 +57,10 @@ public class EdaDbContext : DbContext
 		recipes.Property(x => x.CookingGuideText)
 			.IsRequired()
 			.HasColumnName("cooking_guide");
+		recipes.Property(x => x.Revision)
+			.IsRequired()
+			.HasDefaultValue(0)
+			.HasColumnName("revision");
 		recipes.HasMany(x => x.Ingredients)
 			.WithOne(x => x.Recipe);
 

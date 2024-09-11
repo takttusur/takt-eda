@@ -9,12 +9,14 @@ public class Recipe : Entity
 {
 	private readonly List<RecipeIngredient> _ingredients = new List<RecipeIngredient>();
 
-	protected Recipe(string name, int timeToCookInSeconds, int timeToPrepareInSeconds, string cookingGuideText)
+	protected Recipe(string name, int timeToCookInSeconds, int timeToPrepareInSeconds, string cookingGuideText,
+		uint revision)
 	{
 		Name = name;
 		TimeToCookInSeconds = timeToCookInSeconds;
 		TimeToPrepareInSeconds = timeToPrepareInSeconds;
 		CookingGuideText = cookingGuideText;
+		Revision = revision;
 	}
 
 	/// <summary>
@@ -43,12 +45,17 @@ public class Recipe : Entity
 	/// </summary>
 	public string CookingGuideText { get; protected set; }
 
+	/// <summary>
+	/// The revision of current recipe. Need to confirm that correct recipe will be updated.
+	/// </summary>
+	public uint Revision { get; protected set; }
+
 	public static Recipe Create(string name, int timeToPrepareInSeconds = 0, int timeToCookInSeconds = 0,
 		string cookingGuideText = "")
 	{
 		if (string.IsNullOrWhiteSpace(name))
 			throw new EntityValidationException(nameof(Name), "cannot be empty");
 
-		return new Recipe(name, timeToCookInSeconds, timeToPrepareInSeconds, cookingGuideText);
+		return new Recipe(name, timeToCookInSeconds, timeToPrepareInSeconds, cookingGuideText, 0);
 	}
 }
