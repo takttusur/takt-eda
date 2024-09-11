@@ -7,13 +7,11 @@ namespace TaktTusur.Eda.Domain.Recipe;
 /// </summary>
 public class Recipe : Entity
 {
-	private readonly List<RecipeIngredient> _ingredients;
+	private readonly List<RecipeIngredient> _ingredients = new List<RecipeIngredient>();
 
-	protected Recipe(string name, List<RecipeIngredient> ingredients,
-		int timeToCookInSeconds, int timeToPrepareInSeconds, string cookingGuideText)
+	protected Recipe(string name, int timeToCookInSeconds, int timeToPrepareInSeconds, string cookingGuideText)
 	{
 		Name = name;
-		_ingredients = ingredients;
 		TimeToCookInSeconds = timeToCookInSeconds;
 		TimeToPrepareInSeconds = timeToPrepareInSeconds;
 		CookingGuideText = cookingGuideText;
@@ -28,7 +26,7 @@ public class Recipe : Entity
 	/// <summary>
 	/// Ingredients. All measurements should be for one person.
 	/// </summary>
-	public IReadOnlyCollection<RecipeIngredient> Ingredients => _ingredients;
+	public IReadOnlyList<RecipeIngredient> Ingredients => _ingredients.AsReadOnly();
 
 	/// <summary>
 	/// How much time needed to prepare ingredients for this recipe in seconds.
@@ -46,16 +44,11 @@ public class Recipe : Entity
 	public string CookingGuideText { get; protected set; }
 
 	public static Recipe Create(string name, int timeToPrepareInSeconds = 0, int timeToCookInSeconds = 0,
-		string cookingGuideText = "", IEnumerable<RecipeIngredient>? ingredients = null)
+		string cookingGuideText = "")
 	{
 		if (string.IsNullOrWhiteSpace(name))
 			throw new EntityValidationException(nameof(Name), "cannot be empty");
 
-		var recipeIngredients = ingredients as RecipeIngredient[] ?? ingredients?.ToArray();
-		var ingredientsList = recipeIngredients.Any()
-			? new List<RecipeIngredient>(recipeIngredients)
-			: [];
-
-		return new Recipe(name, ingredientsList, timeToCookInSeconds, timeToPrepareInSeconds, cookingGuideText);
+		return new Recipe(name, timeToCookInSeconds, timeToPrepareInSeconds, cookingGuideText);
 	}
 }

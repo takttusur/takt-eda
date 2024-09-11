@@ -15,12 +15,15 @@ builder.Services.AddDbContext<EdaDbContext>(options =>
 
 builder.Services.AddScoped<IMeasurementUnitsRepository, MeasurementUnitsRepository>();
 builder.Services.AddScoped<IIngredientsRepository, IngredientsRepository>();
+builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
 
 builder.Services.AddScoped<IMeasurementUnitsService, ValuesDictionaryService>();
 builder.Services.AddScoped<IIngredientsService, ValuesDictionaryService>();
+builder.Services.AddScoped<IRecipesService, RecipeService>();
 
 builder.Services.AddAutoMapper(config => { config.AddProfile<MeasurementUnitsProfile>(); });
 builder.Services.AddAutoMapper(config => { config.AddProfile<IngredientsProfile>(); });
+builder.Services.AddAutoMapper(config => { config.AddProfile<RecipesProfile>(); });
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

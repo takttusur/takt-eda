@@ -1,22 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
-using TaktTusur.Eda.Domain.Recipe;
-using TaktTusur.Eda.Domain.Recipe.Queries;
+using TaktTusur.Eda.Application.Paging;
+using TaktTusur.Eda.Application.Services;
+using TaktTusur.Eda.Application.ViewModels;
 
 namespace TaktTusur.Eda.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class RecipeController : ControllerBase
+public class RecipeController(IRecipesService recipesService) : ControllerBase
 {
 	[HttpGet]
-	public GetRecipeListQueryResult Get(int skip, int take)
+	public PageViewModel<RecipeViewModel> Get(int skip = 0, int take = 10)
 	{
-		return null;
-	}
-
-	[HttpGet("{id:long}")]
-	public FullRecipeDto Get(long id)
-	{
-		return null;
+		return recipesService.GetPage(skip, take);
 	}
 }

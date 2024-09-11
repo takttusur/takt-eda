@@ -4,10 +4,8 @@ namespace TaktTusur.Eda.Domain.Recipe;
 
 public class RecipeIngredient : Entity
 {
-	protected RecipeIngredient(Ingredient ingredient, MeasurementUnit units, double amountPerPerson)
+	protected RecipeIngredient(double amountPerPerson)
 	{
-		Ingredient = ingredient;
-		Units = units;
 		AmountPerPerson = amountPerPerson;
 	}
 
@@ -26,12 +24,21 @@ public class RecipeIngredient : Entity
 	/// </summary>
 	public double AmountPerPerson { get; protected set; }
 
+	/// <summary>
+	/// Recipe which has this ingredient.
+	/// </summary>
+	public virtual Recipe? Recipe { get; protected set; }
+
 	public static RecipeIngredient Create(Ingredient ingredient, MeasurementUnit measurementUnit,
 		double amountPerPerson)
 	{
 		if (amountPerPerson <= 0)
 			throw new EntityValidationException(nameof(AmountPerPerson), "should have positive value");
 
-		return new RecipeIngredient(ingredient, measurementUnit, amountPerPerson);
+		return new RecipeIngredient(amountPerPerson)
+		{
+			Ingredient = ingredient,
+			Units = measurementUnit
+		};
 	}
 }
