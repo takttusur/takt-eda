@@ -62,11 +62,16 @@ public class EdaDbContext : DbContext
 			.HasDefaultValue(0)
 			.HasColumnName("revision");
 		recipes.HasMany(x => x.Ingredients)
-			.WithOne(x => x.Recipe);
+			.WithOne(x => x.Recipe)
+			.HasForeignKey("recipe_id")
+			.OnDelete(DeleteBehavior.Restrict);
 
 		var recipeIngredient = modelBuilder.Entity<RecipeIngredient>();
 		recipeIngredient.ToTable("RecipesIngredients")
 			.HasKey(x => x.Id);
+		recipeIngredient.Property(x => x.Id)
+			.IsRequired()
+			.HasColumnName("id");
 		recipeIngredient.Property(x => x.AmountPerPerson)
 			.IsRequired()
 			.HasColumnName("amount_per_person");
@@ -79,11 +84,6 @@ public class EdaDbContext : DbContext
 		recipeIngredient.HasOne(e => e.Units)
 			.WithMany()
 			.HasForeignKey("measurement_units_id")
-			.OnDelete(DeleteBehavior.Restrict);
-
-		recipeIngredient.HasOne(e => e.Recipe)
-			.WithMany()
-			.HasForeignKey("recipe_id")
 			.OnDelete(DeleteBehavior.Restrict);
 	}
 }
