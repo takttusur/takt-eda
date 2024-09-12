@@ -24,6 +24,11 @@ public abstract class BaseRepository<T>(DbContext dbContext) : IRepository<T>
 			query = path(query);
 		}
 
+		if (!useTracking)
+		{
+			query = query.AsNoTracking();
+		}
+
 		return query.SingleOrDefault(e => e.Id == id);
 	}
 
