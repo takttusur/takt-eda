@@ -14,4 +14,10 @@ public class RecipeController(IRecipesService recipesService) : ControllerBase
 	{
 		return recipesService.GetPage(skip, take);
 	}
+
+	[HttpGet("{id:long}")]
+	public RecipeFullViewModel Get(long id)
+	{
+		return recipesService.GetRecipeById(id);
+	}
 }

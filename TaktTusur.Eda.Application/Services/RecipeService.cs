@@ -19,4 +19,11 @@ public class RecipeService(IRecipeRepository repository, IMapper mapper) : IReci
 			Data = data.ToList()
 		};
 	}
+
+	public RecipeFullViewModel GetRecipeById(long id)
+	{
+		var query = repository.GetById(id);
+
+		return mapper.Map<RecipeFullViewModel>(query);
+	}
 }
