@@ -11,9 +11,10 @@ public class RecipeRepository(EdaDbContext dbContext) : BaseRepository<Recipe>(d
 		return useTracking ? dbContext.Recipes : dbContext.Recipes.AsNoTracking();
 	}
 
-	public override Recipe? GetById(long id)
+	public override Recipe? GetById(long id, bool useTracking = false)
 	{
 		return base.GetById(id,
+			useTracking,
 			r => r.Include(x => x.Ingredients).ThenInclude(x => x.Ingredient),
 			r => r.Include(x => x.Ingredients).ThenInclude(x => x.Units));
 	}

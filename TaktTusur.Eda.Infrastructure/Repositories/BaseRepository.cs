@@ -10,12 +10,12 @@ public abstract class BaseRepository<T>(DbContext dbContext) : IRepository<T>
 {
 	public abstract IQueryable<T> GetAll(bool useTracking = false);
 
-	public virtual T? GetById(long id)
+	public virtual T? GetById(long id, bool useTracking = false)
 	{
-		return GetById(id, []);
+		return GetById(id, useTracking, []);
 	}
 
-	public virtual T? GetById(long id, params Func<IQueryable<T>, IQueryable<T>>[] includes)
+	public virtual T? GetById(long id, bool useTracking = false, params Func<IQueryable<T>, IQueryable<T>>[] includes)
 	{
 		IQueryable<T> query = dbContext.Set<T>();
 
