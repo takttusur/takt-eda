@@ -1,6 +1,6 @@
 namespace TaktTusur.Eda.Application.ViewModels;
 
-public class RecipeViewModel
+public class RecipeShortViewModel
 {
 	public long Id { get; set; }
 
@@ -9,6 +9,4 @@ public class RecipeViewModel
 	public int TimeToPrepareInSeconds { get; set; }
 
 	public int TimeToCookInSeconds { get; set; }
-
-	public string CookingGuideText { get; set; }
 }

@@ -8,6 +8,6 @@ public class RecipesProfile : Profile
 {
 	public RecipesProfile()
 	{
-		CreateMap<Recipe, RecipeViewModel>();
+		CreateMap<Recipe, RecipeShortViewModel>();
 	}
 }

@@ -10,7 +10,7 @@ namespace TaktTusur.Eda.Api.Controllers;
 public class RecipeController(IRecipesService recipesService) : ControllerBase
 {
 	[HttpGet]
-	public PageViewModel<RecipeViewModel> Get(int skip = 0, int take = 10)
+	public PageViewModel<RecipeShortViewModel> Get(int skip = 0, int take = 10)
 	{
 		return recipesService.GetPage(skip, take);
 	}

@@ -7,11 +7,11 @@ namespace TaktTusur.Eda.Application.Services;
 
 public class RecipeService(IRecipeRepository repository, IMapper mapper) : IRecipesService
 {
-	public PageViewModel<RecipeViewModel> GetPage(int skip, int take)
+	public PageViewModel<RecipeShortViewModel> GetPage(int skip, int take)
 	{
 		var query = repository.GetAll().OrderBy(x => x.Name).Skip(skip).Take(take);
-		var data = mapper.ProjectTo<RecipeViewModel>(query);
-		return new PageViewModel<RecipeViewModel>()
+		var data = mapper.ProjectTo<RecipeShortViewModel>(query);
+		return new PageViewModel<RecipeShortViewModel>()
 		{
 			Skip = skip,
 			Take = take,
