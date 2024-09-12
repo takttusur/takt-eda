@@ -80,7 +80,7 @@ DO $$
         IF NOT EXISTS (SELECT
                        FROM pg_catalog.pg_tables
                        WHERE schemaname = 'public'
-                         AND tablename = 'Recipes')
+                         AND tablename = 'RecipesIngredients')
         THEN
             CREATE TABLE public."RecipesIngredients"
             (
