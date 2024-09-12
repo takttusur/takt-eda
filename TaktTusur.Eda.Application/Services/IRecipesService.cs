@@ -6,4 +6,5 @@ namespace TaktTusur.Eda.Application.Services;
 
 public interface IRecipesService : IHasPaging<Recipe, RecipeShortViewModel>
 {
+	RecipeFullViewModel GetRecipeById(long id);
 }
