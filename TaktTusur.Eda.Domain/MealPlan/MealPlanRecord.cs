@@ -8,8 +8,6 @@ namespace TaktTusur.Eda.Domain.MealPlan;
 /// </summary>
 public class MealPlanRecord : Entity
 {
-	public uint Id { get; protected set; }
-
 	/// <summary>
 	/// The meal what will be cooked.
 	/// </summary>
