@@ -5,7 +5,7 @@ namespace TaktTusur.Eda.Domain.MealPlan;
 /// <summary>
 /// Plan contains recipes for each eating time.
 /// </summary>
-public class MealPlan : Entity
+public class MealPlan : TimeTrackedEntity
 {
 	private readonly List<MealPlanRecord> _records = new List<MealPlanRecord>();
 

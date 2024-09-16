@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TaktTusur.Eda.Domain.MealPlan;
 using TaktTusur.Eda.Domain.Recipe;
+using TaktTusur.Eda.Infrastructure.Converters;
 
 namespace TaktTusur.Eda.Infrastructure.Contexts;
 
@@ -102,5 +103,12 @@ public class EdaDbContext : DbContext
 			.IsRequired()
 			.HasColumnName("revision");
 		mealPlan.Ignore(x => x.Records);
+	}
+
+	protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+	{
+		base.ConfigureConventions(configurationBuilder);
+		configurationBuilder.Properties<DateTimeOffset>()
+			.HaveConversion<DateTimeOffsetUniversalTimeConverter>();
 	}
 }
