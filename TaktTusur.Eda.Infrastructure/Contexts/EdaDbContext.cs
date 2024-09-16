@@ -102,6 +102,12 @@ public class EdaDbContext : DbContext
 		mealPlan.Property(x => x.Revision)
 			.IsRequired()
 			.HasColumnName("revision");
+		mealPlan.Property(x => x.CreatedAt)
+			.IsRequired()
+			.HasColumnName("created_at");
+		mealPlan.Property(x => x.UpdatedAt)
+			.IsRequired()
+			.HasColumnName("updated_at");
 		mealPlan.Ignore(x => x.Records);
 	}
 

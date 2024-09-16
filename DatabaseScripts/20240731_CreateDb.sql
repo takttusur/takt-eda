@@ -132,6 +132,8 @@ DO $$
                 id              bigint NOT NULL,
                 long_identifier uuid   NOT NULL,
                 revision        bigint NOT NULL DEFAULT 0,
+                created_at timestamp with time zone NOT NULL,
+                updated_at timestamp with time zone NOT NULL,
                 PRIMARY KEY (id),
                 CONSTRAINT "mealPlan_longId_unique" UNIQUE (long_identifier)
             );
@@ -139,9 +141,9 @@ DO $$
             ALTER TABLE IF EXISTS public."MealPlans"
                 OWNER to CURRENT_USER;
 
-            INSERT INTO public."MealPlans" (id, long_identifier, revision)
-            VALUES (0, '40e6215d-b5c6-4896-987c-f30f3678f608', 0),
-                   (1, '40e6215d-b5c6-4896-987c-f30f3678f609', 0);
+            INSERT INTO public."MealPlans" (id, long_identifier, revision, created_at, updated_at)
+            VALUES (0, '40e6215d-b5c6-4896-987c-f30f3678f608', 0, '2024-09-16 10:23:54+00', '2024-09-17 9:00:00+00'),
+                   (1, '40e6215d-b5c6-4896-987c-f30f3678f609', 0, '2024-09-16 11:23:54+00', '2024-09-17 9:00:00+00');
                    
         END IF;
 

@@ -9,10 +9,12 @@ public class MealPlan : TimeTrackedEntity
 {
 	private readonly List<MealPlanRecord> _records = new List<MealPlanRecord>();
 
-	public MealPlan(Guid longIdentifier, uint revision)
+	public MealPlan(Guid longIdentifier, uint revision, DateTimeOffset createdAt, DateTimeOffset updatedAt)
 	{
 		LongIdentifier = longIdentifier;
 		Revision = revision;
+		CreatedAt = createdAt;
+		UpdatedAt = updatedAt;
 	}
 
 	/// <summary>
@@ -37,6 +39,6 @@ public class MealPlan : TimeTrackedEntity
 	/// <returns>New meal plan with GUID.</returns>
 	public static MealPlan Create()
 	{
-		return new MealPlan(Guid.NewGuid(), 0);
+		return new MealPlan(Guid.NewGuid(), 0, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow);
 	}
 }
