@@ -147,5 +147,35 @@ DO $$
                    
         END IF;
 
+        IF NOT EXISTS (SELECT
+                       FROM pg_catalog.pg_tables
+                       WHERE schemaname = 'public'
+                         AND tablename = 'MealPlanRecords')
+        THEN
+            CREATE TABLE public."MealPlanRecords"
+            (
+                id               bigint                   NOT NULL,
+                eating_time      integer                  NOT NULL DEFAULT 0,
+                amount_of_people bigint                   NOT NULL,
+                date_utc         timestamp with time zone NOT NULL,
+                recipe_id        bigint                   NOT NULL,
+                meal_plan_id     bigint                   NOT NULL,
+                PRIMARY KEY (id),
+                CONSTRAINT "mealPlan_recipe_id" FOREIGN KEY (recipe_id)
+                    REFERENCES public."Recipes" (id) MATCH SIMPLE
+                    ON UPDATE NO ACTION
+                    ON DELETE NO ACTION
+                    NOT VALID,
+                CONSTRAINT "mealPlan_record" FOREIGN KEY (meal_plan_id)
+                    REFERENCES public."MealPlans" (id) MATCH SIMPLE
+                    ON UPDATE NO ACTION
+                    ON DELETE NO ACTION
+                    NOT VALID
+            );
+
+            ALTER TABLE IF EXISTS public."MealPlanRecords"
+                OWNER to CURRENT_USER;
+        END IF;
+
 
     END $$;
