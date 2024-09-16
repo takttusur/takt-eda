@@ -1,11 +1,27 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TaktTusur.Eda.Application.Paging;
+using TaktTusur.Eda.Application.Services;
+using TaktTusur.Eda.Application.ViewModels;
 
 namespace TaktTusur.Eda.Api.Controllers;
 
 /// <summary>
 /// Manage meal plans(create, change, view).
 /// </summary>
-public class MealPlanController : ControllerBase
+[ApiController]
+[Route("[controller]")]
+public class MealPlanController(IMealPlanService mealPlanService) : ControllerBase
 {
+	[HttpGet]
+	public PageViewModel<MealPlanShortViewModel> GetAll(int skip = 0, int take = 10)
+	{
+		return mealPlanService.GetPage(skip, take);
+	}
+
+	[HttpGet("{longId:guid}")]
+	public MealPlanFullViewModel Get(System.Guid longId)
+	{
+		return mealPlanService.GetByGuid(longId);
+	}
 }

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using TaktTusur.Eda.Domain.MealPlan;
 using TaktTusur.Eda.Domain.Recipe;
 
 namespace TaktTusur.Eda.Infrastructure.Contexts;
@@ -16,6 +17,8 @@ public class EdaDbContext : DbContext
 	public DbSet<Recipe> Recipes { get; protected set; }
 
 	public DbSet<RecipeIngredient> RecipeIngredients { get; protected set; }
+
+	public DbSet<MealPlan> MealPlans { get; protected set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
@@ -85,5 +88,19 @@ public class EdaDbContext : DbContext
 			.WithMany()
 			.HasForeignKey("measurement_units_id")
 			.OnDelete(DeleteBehavior.Restrict);
+
+		var mealPlan = modelBuilder.Entity<MealPlan>();
+		mealPlan.ToTable("MealPlans")
+			.HasKey(x => x.Id);
+		mealPlan.Property(x => x.Id)
+			.IsRequired()
+			.HasColumnName("id");
+		mealPlan.Property(x => x.LongIdentifier)
+			.IsRequired()
+			.HasColumnName("long_identifier");
+		mealPlan.Property(x => x.Revision)
+			.IsRequired()
+			.HasColumnName("revision");
+		mealPlan.Ignore(x => x.Records);
 	}
 }

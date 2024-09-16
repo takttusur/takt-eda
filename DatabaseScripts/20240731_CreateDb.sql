@@ -120,7 +120,29 @@ DO $$
                    (5, 1, 5, 0, 50),
                    (6, 1, 7, 0, 10);
 
+        END IF;
 
+        IF NOT EXISTS (SELECT
+                       FROM pg_catalog.pg_tables
+                       WHERE schemaname = 'public'
+                         AND tablename = 'MealPlans')
+        THEN
+            CREATE TABLE public."MealPlans"
+            (
+                id              bigint NOT NULL,
+                long_identifier uuid   NOT NULL,
+                revision        bigint NOT NULL DEFAULT 0,
+                PRIMARY KEY (id),
+                CONSTRAINT "mealPlan_longId_unique" UNIQUE (long_identifier)
+            );
+
+            ALTER TABLE IF EXISTS public."MealPlans"
+                OWNER to CURRENT_USER;
+
+            INSERT INTO public."MealPlans" (id, long_identifier, revision)
+            VALUES (0, '40e6215d-b5c6-4896-987c-f30f3678f608', 0),
+                   (1, '40e6215d-b5c6-4896-987c-f30f3678f609', 0);
+                   
         END IF;
 
 
