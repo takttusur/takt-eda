@@ -9,11 +9,6 @@ namespace TaktTusur.Eda.Domain.MealPlan;
 public class MealPlanRecord : Entity
 {
 	/// <summary>
-	/// The meal what will be cooked.
-	/// </summary>
-	public Recipe.Recipe Recipe { get; protected set; }
-
-	/// <summary>
 	/// Eating time, based on day.
 	/// </summary>
 	public EatingTime EatingTime { get; protected set; }
@@ -27,4 +22,14 @@ public class MealPlanRecord : Entity
 	/// The date, when this meal will be eaten.
 	/// </summary>
 	public DateTimeOffset DateUtc { get; protected set; }
+
+	/// <summary>
+	/// The meal what will be cooked.
+	/// </summary>
+	public virtual Recipe.Recipe Recipe { get; protected set; }
+
+	/// <summary>
+	/// Parent MealPlan.
+	/// </summary>
+	public virtual MealPlan MealPlan { get; protected set; }
 }

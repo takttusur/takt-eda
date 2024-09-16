@@ -21,6 +21,8 @@ public class EdaDbContext : DbContext
 
 	public DbSet<MealPlan> MealPlans { get; protected set; }
 
+	public DbSet<MealPlanRecord> MealPlanRecords { get; protected set; }
+
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		var measurementUnits = modelBuilder.Entity<MeasurementUnit>();
@@ -108,7 +110,30 @@ public class EdaDbContext : DbContext
 		mealPlan.Property(x => x.UpdatedAt)
 			.IsRequired()
 			.HasColumnName("updated_at");
-		mealPlan.Ignore(x => x.Records);
+		mealPlan.HasMany(x => x.Records)
+			.WithOne(x => x.MealPlan)
+			.HasForeignKey("meal_plan_id")
+			.OnDelete(DeleteBehavior.Restrict);
+
+		var mealPlanRecords = modelBuilder.Entity<MealPlanRecord>();
+		mealPlanRecords.ToTable("MealPlanRecords")
+			.HasKey(x => x.Id);
+		mealPlanRecords.Property(x => x.Id)
+			.HasColumnName("id")
+			.IsRequired();
+		mealPlanRecords.Property(x => x.DateUtc)
+			.IsRequired()
+			.HasColumnName("date_utc");
+		mealPlanRecords.Property(x => x.EatingTime)
+			.IsRequired()
+			.HasColumnName("eating_time");
+		mealPlanRecords.Property(x => x.AmountOfPeople)
+			.IsRequired()
+			.HasColumnName("amount_of_people");
+		mealPlanRecords.HasOne(e => e.Recipe)
+			.WithMany()
+			.HasForeignKey("recipe_id")
+			.OnDelete(DeleteBehavior.Restrict);
 	}
 
 	protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
@@ -116,5 +141,7 @@ public class EdaDbContext : DbContext
 		base.ConfigureConventions(configurationBuilder);
 		configurationBuilder.Properties<DateTimeOffset>()
 			.HaveConversion<DateTimeOffsetUniversalTimeConverter>();
+		configurationBuilder.Properties<EatingTime>()
+			.HaveConversion<EatingTimeIntConverter>();
 	}
 }

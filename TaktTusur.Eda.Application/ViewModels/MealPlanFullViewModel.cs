@@ -1,3 +1,5 @@
+using TaktTusur.Eda.Domain.MealPlan;
+
 namespace TaktTusur.Eda.Application.ViewModels;
 
 public class MealPlanFullViewModel
@@ -11,4 +13,6 @@ public class MealPlanFullViewModel
 	public DateTimeOffset CreatedAt { get; set; }
 
 	public DateTimeOffset UpdatedAt { get; set; }
+
+	public List<MealPlanRecordViewModel> Records { get; set; }
 }

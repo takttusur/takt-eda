@@ -175,6 +175,11 @@ DO $$
 
             ALTER TABLE IF EXISTS public."MealPlanRecords"
                 OWNER to CURRENT_USER;
+
+            INSERT INTO public."MealPlanRecords"(id, eating_time, amount_of_people, date_utc, recipe_id, meal_plan_id)
+            VALUES (1, 1, 5, '2024-09-16 00:00:00+00', 0, 0),
+                   (2, 2, 5, '2024-09-16 00:00:00+00', 1, 0);
+            
         END IF;
 
 

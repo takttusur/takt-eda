@@ -13,6 +13,8 @@ public class MealPlansRepository(EdaDbContext dbContext) : BaseRepository<MealPl
 
 	public MealPlan GetByGuid(Guid guid)
 	{
-		return dbContext.MealPlans.Single(x => x.LongIdentifier == guid);
+		return dbContext.MealPlans
+			.Include(x => x.Records).ThenInclude(x => x.Recipe)
+			.Single(x => x.LongIdentifier == guid);
 	}
 }
