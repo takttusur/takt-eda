@@ -14,5 +14,7 @@ public class MealPlanFullViewModel
 
 	public DateTimeOffset UpdatedAt { get; set; }
 
+	public List<DateTimeOffset> Days { get; set; }
+
 	public List<MealPlanRecordViewModel> Records { get; set; }
 }

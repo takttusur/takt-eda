@@ -9,7 +9,13 @@ public class MealPlansProfile : Profile
 	public MealPlansProfile()
 	{
 		CreateMap<MealPlan, MealPlanShortViewModel>();
-		CreateMap<MealPlan, MealPlanFullViewModel>();
+		CreateMap<MealPlan, MealPlanFullViewModel>()
+			.ForMember(x => x.Days,
+				x =>
+					x.MapFrom(m => m.Records
+						.Select(r => r.DateUtc)
+						.OrderBy(date => date)
+						.Distinct()));
 
 		CreateMap<MealPlanRecord, MealPlanRecordViewModel>()
 			.ForMember(x => x.RecipeId,
