@@ -1,4 +1,3 @@
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TaktTusur.Eda.Application.Paging;
 using TaktTusur.Eda.Application.Services;
@@ -20,8 +19,14 @@ public class MealPlanController(IMealPlanService mealPlanService) : ControllerBa
 	}
 
 	[HttpGet("{longId:guid}")]
-	public MealPlanFullViewModel Get(System.Guid longId)
+	public MealPlanFullViewModel Get(Guid longId)
 	{
 		return mealPlanService.GetByGuid(longId);
+	}
+
+	[HttpPost]
+	public MealPlanFullViewModel CreateMealPlan(DateTimeOffset startDate, DateTimeOffset endDate, uint peopleCount)
+	{
+		return mealPlanService.CreateMealPlan(startDate, endDate, peopleCount);
 	}
 }

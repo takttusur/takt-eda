@@ -2,10 +2,12 @@ using AutoMapper;
 using TaktTusur.Eda.Application.Paging;
 using TaktTusur.Eda.Application.ViewModels;
 using TaktTusur.Eda.Domain.MealPlan;
+using TaktTusur.Eda.Domain.Recipe;
 
 namespace TaktTusur.Eda.Application.Services;
 
-public class MealPlanService(IMealPlanRepository repository, IMapper mapper) : IMealPlanService
+public class MealPlanService(IMealPlanRepository repository, IMapper mapper, IRecipeRepository recipeRepository)
+	: IMealPlanService
 {
 	public PageViewModel<MealPlanShortViewModel> GetPage(int skip, int take)
 	{
@@ -32,5 +34,25 @@ public class MealPlanService(IMealPlanRepository repository, IMapper mapper) : I
 		var query = repository.GetByGuid(guid);
 
 		return mapper.Map<MealPlanFullViewModel>(query);
+	}
+
+	public MealPlanFullViewModel CreateMealPlan(DateTimeOffset startDate, DateTimeOffset endDate, uint peopleCount)
+	{
+		var recipes = recipeRepository.GetAll().ToArray();
+		var count = recipes.Length;
+		var random = new Random();
+
+		var mealPlan = MealPlan.Create();
+
+		for (var currentDate = startDate; currentDate <= endDate; currentDate = currentDate.AddDays(1))
+		{
+			mealPlan.AddRecord(EatingTime.Breakfast, peopleCount, currentDate, recipes[random.Next(count)]);
+			mealPlan.AddRecord(EatingTime.Lunch, peopleCount, currentDate, recipes[random.Next(count)]);
+			mealPlan.AddRecord(EatingTime.Dinner, peopleCount, currentDate, recipes[random.Next(count)]);
+		}
+
+		repository.Create(mealPlan);
+
+		return mapper.Map<MealPlan, MealPlanFullViewModel>(mealPlan);
 	}
 }

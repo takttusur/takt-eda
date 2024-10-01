@@ -32,4 +32,16 @@ public class MealPlanRecord : Entity
 	/// Parent MealPlan.
 	/// </summary>
 	public virtual MealPlan MealPlan { get; protected set; }
+
+	public static MealPlanRecord Create(EatingTime time, uint amountOfPeople, DateTimeOffset dateUtc,
+		Recipe.Recipe recipe)
+	{
+		return new MealPlanRecord()
+		{
+			EatingTime = time,
+			AmountOfPeople = amountOfPeople,
+			DateUtc = dateUtc,
+			Recipe = recipe
+		};
+	}
 }

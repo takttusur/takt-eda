@@ -1,4 +1,5 @@
 using TaktTusur.Eda.Domain.Base;
+using TaktTusur.Eda.Domain.Recipe;
 
 namespace TaktTusur.Eda.Domain.MealPlan;
 
@@ -40,5 +41,12 @@ public class MealPlan : TimeTrackedEntity
 	public static MealPlan Create()
 	{
 		return new MealPlan(Guid.NewGuid(), 0, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow);
+	}
+
+	public void AddRecord(EatingTime eatingTime, uint people, DateTimeOffset date, Recipe.Recipe recipe)
+	{
+		var record = MealPlanRecord.Create(eatingTime, people, date, recipe);
+		_records.Add(record);
+		UpdatedAt = DateTimeOffset.Now;
 	}
 }
