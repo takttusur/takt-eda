@@ -9,7 +9,7 @@ namespace TaktTusur.Eda.Api.Controllers;
 /// Manage meal plans(create, change, view).
 /// </summary>
 [ApiController]
-[Route("[controller]")]
+[Route("api/v1/[controller]")]
 public class MealPlanController(IMealPlanService mealPlanService) : ControllerBase
 {
 	[HttpGet]

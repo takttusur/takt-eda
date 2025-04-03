@@ -6,7 +6,7 @@ using TaktTusur.Eda.Application.ViewModels;
 namespace TaktTusur.Eda.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/v1/[controller]")]
 public class RecipeController(IRecipesService recipesService) : ControllerBase
 {
 	[HttpGet]

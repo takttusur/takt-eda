@@ -7,7 +7,7 @@ using TaktTusur.Eda.Domain.Recipe;
 namespace TaktTusur.Eda.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/v1/[controller]")]
 public class MeasurementUnitController(IMeasurementUnitsService service) : ControllerBase
 {
 	[HttpGet]

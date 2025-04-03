@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using TaktTusur.Eda.Domain.Base;
 using TaktTusur.Eda.Domain.MealPlan;
 using TaktTusur.Eda.Domain.Recipe;
 using TaktTusur.Eda.Infrastructure.Converters;
