@@ -15,7 +15,7 @@ namespace TaktTusur.Eda.Api.Tests.TestData
 			};
 		}
 
-		public static IEnumerable<Ingredient> TestData => new[]
+		public static IEnumerable<Ingredient> TestData { get; } = new[]
 		{
 			Ingredient.Create("картофель"),
 			Ingredient.Create("лук"),

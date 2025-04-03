@@ -16,7 +16,7 @@ public static class MeasurementUnitsTestData
 		};
 	}
 
-	public static IEnumerable<MeasurementUnit> TestData => new[]
+	public static IEnumerable<MeasurementUnit> TestData { get; } = new[]
 	{
 		MeasurementUnit.Create("литр"),
 		MeasurementUnit.Create("грамм"),
