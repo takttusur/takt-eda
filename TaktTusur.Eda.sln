@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaktTusur.Eda.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaktTusur.Eda.Application", "TaktTusur.Eda.Application\TaktTusur.Eda.Application.csproj", "{DEE30435-AF2D-4968-8601-46AF649FC51E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaktTusur.Eda.Api.Tests", "TaktTusur.Eda.Api.Tests\TaktTusur.Eda.Api.Tests.csproj", "{ED9DF9B7-FEF6-479C-99DB-CE8E98A02028}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{DEE30435-AF2D-4968-8601-46AF649FC51E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEE30435-AF2D-4968-8601-46AF649FC51E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEE30435-AF2D-4968-8601-46AF649FC51E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED9DF9B7-FEF6-479C-99DB-CE8E98A02028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED9DF9B7-FEF6-479C-99DB-CE8E98A02028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED9DF9B7-FEF6-479C-99DB-CE8E98A02028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED9DF9B7-FEF6-479C-99DB-CE8E98A02028}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
