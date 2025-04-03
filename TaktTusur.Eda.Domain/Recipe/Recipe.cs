@@ -50,6 +50,17 @@ public class Recipe : Entity
 	/// </summary>
 	public uint Revision { get; protected set; }
 
+	/// <summary>
+	/// Add ingredient to the recipe.
+	/// </summary>
+	/// <param name="ingredient">Ingredient.</param>
+	/// <param name="unit">Measurement unit.</param>
+	/// <param name="amountPerPerson">How much I need this for 1 person.</param>
+	public void AddIngredient(Ingredient ingredient, MeasurementUnit unit, double amountPerPerson)
+	{
+		_ingredients.Add(RecipeIngredient.Create(ingredient, unit, amountPerPerson));
+	}
+
 	public static Recipe Create(string name, int timeToPrepareInSeconds = 0, int timeToCookInSeconds = 0,
 		string cookingGuideText = "")
 	{
