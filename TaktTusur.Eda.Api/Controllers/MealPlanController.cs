@@ -24,9 +24,18 @@ public class MealPlanController(IMealPlanService mealPlanService) : ControllerBa
 		return mealPlanService.GetByGuid(longId);
 	}
 
+	/// <summary>
+	/// Creates new MealPlan. Empty or autofilled.
+	/// </summary>
+	/// <param name="startDate">Start date for plan.</param>
+	/// <param name="endDate">End date for plan.</param>
+	/// <param name="peopleCount">How many people will eat.</param>
+	/// <param name="autofill">Is autofilling needed?</param>
+	/// <returns>Empty meal plan, but can be autofilleld later.</returns>
 	[HttpPost]
-	public MealPlanFullViewModel CreateMealPlan(DateTimeOffset startDate, DateTimeOffset endDate, uint peopleCount)
+	public MealPlanFullViewModel CreateMealPlan(DateTimeOffset startDate, DateTimeOffset endDate, uint peopleCount,
+		bool autofill = false)
 	{
-		return mealPlanService.CreateMealPlan(startDate, endDate, peopleCount);
+		return mealPlanService.CreateMealPlan(startDate, endDate, peopleCount, autofill);
 	}
 }

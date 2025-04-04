@@ -36,7 +36,8 @@ public class MealPlanService(IMealPlanRepository repository, IMapper mapper, IRe
 		return mapper.Map<MealPlanFullViewModel>(query);
 	}
 
-	public MealPlanFullViewModel CreateMealPlan(DateTimeOffset startDate, DateTimeOffset endDate, uint peopleCount)
+	public MealPlanFullViewModel CreateMealPlan(DateTimeOffset startDate, DateTimeOffset endDate, uint peopleCount,
+		bool autofill)
 	{
 		var recipes = recipeRepository.GetAll().ToArray();
 		var count = recipes.Length;
@@ -44,11 +45,14 @@ public class MealPlanService(IMealPlanRepository repository, IMapper mapper, IRe
 
 		var mealPlan = MealPlan.Create();
 
-		for (var currentDate = startDate; currentDate <= endDate; currentDate = currentDate.AddDays(1))
+		if (autofill)
 		{
-			mealPlan.AddRecord(EatingTime.Breakfast, peopleCount, currentDate, recipes[random.Next(count)]);
-			mealPlan.AddRecord(EatingTime.Lunch, peopleCount, currentDate, recipes[random.Next(count)]);
-			mealPlan.AddRecord(EatingTime.Dinner, peopleCount, currentDate, recipes[random.Next(count)]);
+			for (var currentDate = startDate; currentDate <= endDate; currentDate = currentDate.AddDays(1))
+			{
+				mealPlan.AddRecord(EatingTime.Breakfast, peopleCount, currentDate, recipes[random.Next(count)]);
+				mealPlan.AddRecord(EatingTime.Lunch, peopleCount, currentDate, recipes[random.Next(count)]);
+				mealPlan.AddRecord(EatingTime.Dinner, peopleCount, currentDate, recipes[random.Next(count)]);
+			}
 		}
 
 		repository.Create(mealPlan);
