@@ -4,6 +4,7 @@
     <attachedFolders>
       <Path>DatabaseScripts</Path>
       <Path>DbScripts</Path>
+      <Path>Recipes</Path>
     </attachedFolders>
     <explicitIncludes />
     <explicitExcludes />
