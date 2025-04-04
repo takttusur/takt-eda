@@ -114,7 +114,7 @@ public class MealPlanControllerTests : TestsBase
 			.Should()
 			.HaveCount(firstPlan.Records.Count);
 
-		var record = data!.Records.First();
+		var record = data!.Records.First(x => x.Id == firstRecord.Id);
 		record.RecipeId
 			.Should()
 			.Be(firstRecord.Recipe.Id);
