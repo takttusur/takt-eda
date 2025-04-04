@@ -1,3 +1,4 @@
+using System.Net.Http.Json;
 using FluentAssertions;
 using TaktTusur.Eda.Api.Tests.Helpers;
 using TaktTusur.Eda.Api.Tests.Infrastructure;
@@ -136,5 +137,31 @@ public class MealPlanControllerTests : TestsBase
 		record.DateUtc
 			.Should()
 			.Be(firstRecord.DateUtc);
+	}
+
+	[Test]
+	public async Task CreateNewMealPlan_Autofill()
+	{
+		var client = WebAppFactory!.CreateClient();
+		var postData = new
+		{
+			startDate = "2025-04-01",
+			endDate = "2025-04-05", // 5 days
+			peopleCount = 5
+		};
+
+		var request = await client.PostAsJsonAsync($"{BASE_URL}", postData);
+		var response = await request.Content.ReadAsStringAsync();
+		var data = response.FromJson<MealPlanFullViewModel>();
+
+		data!.Days
+			.Should()
+			.HaveCount(5, "5 days plan was requested");
+		data!.LongIdentifier
+			.Should()
+			.NotBeEmpty("Normal guid should be assigned");
+		data!.Records
+			.Should()
+			.HaveCount(5 * 3, "Records count should be: 5 days * 3 eating times");
 	}
 }

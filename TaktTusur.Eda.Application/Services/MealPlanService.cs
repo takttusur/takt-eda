@@ -39,7 +39,7 @@ public class MealPlanService(IMealPlanRepository repository, IMapper mapper, IRe
 	public MealPlanFullViewModel CreateMealPlan(DateTimeOffset startDate, DateTimeOffset endDate, uint peopleCount,
 		bool autofill)
 	{
-		var recipes = recipeRepository.GetAll().ToArray();
+		var recipes = recipeRepository.GetAll(true).ToArray();
 		var count = recipes.Length;
 		var random = new Random();
 

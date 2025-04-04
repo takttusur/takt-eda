@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using TaktTusur.Eda.Api.Models;
 using TaktTusur.Eda.Application.Paging;
 using TaktTusur.Eda.Application.Services;
 using TaktTusur.Eda.Application.ViewModels;
@@ -27,15 +28,11 @@ public class MealPlanController(IMealPlanService mealPlanService) : ControllerBa
 	/// <summary>
 	/// Creates new MealPlan. Empty or autofilled.
 	/// </summary>
-	/// <param name="startDate">Start date for plan.</param>
-	/// <param name="endDate">End date for plan.</param>
-	/// <param name="peopleCount">How many people will eat.</param>
-	/// <param name="autofill">Is autofilling needed?</param>
-	/// <returns>Empty meal plan, but can be autofilleld later.</returns>
+	/// <param name="model">The model for meal plan creation</param>
+	/// <returns>Autofilled meal plan.</returns>
 	[HttpPost]
-	public MealPlanFullViewModel CreateMealPlan(DateTimeOffset startDate, DateTimeOffset endDate, uint peopleCount,
-		bool autofill = false)
+	public MealPlanFullViewModel CreateMealPlan([FromBody] MealPlanCreateModel model)
 	{
-		return mealPlanService.CreateMealPlan(startDate, endDate, peopleCount, autofill);
+		return mealPlanService.CreateMealPlan(model.StartDate, model.EndDate, model.PeopleCount, true);
 	}
 }
