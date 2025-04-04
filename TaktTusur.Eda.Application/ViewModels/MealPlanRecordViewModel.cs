@@ -4,7 +4,7 @@ namespace TaktTusur.Eda.Application.ViewModels;
 
 public class MealPlanRecordViewModel
 {
-	public uint Id { get; set; }
+	public long Id { get; set; }
 
 	public EatingTime EatingTime { get; set; }
 
@@ -12,7 +12,7 @@ public class MealPlanRecordViewModel
 
 	public DateTimeOffset DateUtc { get; set; }
 
-	public uint RecipeId { get; set; }
+	public long RecipeId { get; set; }
 
 	public string RecipeName { get; set; }
 
