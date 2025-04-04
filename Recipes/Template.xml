@@ -1,1 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<Recipe>
+    <Name>Chicken Soup</Name>
+    <TimeToPrepareInSeconds>1800</TimeToPrepareInSeconds>
+    <TimeToCookInSeconds>3600</TimeToCookInSeconds>
+    <Ingredients>
+        <Ingredient name="Chicken" unit="grams" amountPerPerson="100"/>
+    </Ingredients>
+    <CookingGuideText>Instructions go here...</CookingGuideText>
+</Recipe>
