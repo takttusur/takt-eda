@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Recipe>
+    <Name>Homemade Chicken Soup</Name>
+    <TimeToPrepareInSeconds>3000</TimeToPrepareInSeconds>
+    <TimeToCookInSeconds>7200</TimeToCookInSeconds>
+    <Ingredients>
+        <Ingredient name="Whole Chicken" unit="grams" amountPerPerson="1000"/>
+        <Ingredient name="Carrots" unit="grams" amountPerPerson="200"/>
+        <Ingredient name="Onions" unit="grams" amountPerPerson="200"/>
+        <Ingredient name="Celery Stalks" unit="grams" amountPerPerson="200"/>
+        <Ingredient name="Salt" unit="grams" amountPerPerson="10"/>
+        <Ingredient name="Pepper" unit="grams" amountPerPerson="5"/>
+    </Ingredients>
+    <CookingGuideText>
+        1. Combine the chicken, carrots, onions, and celery in a large pot and cover with cold water.
+        2. Bring to a boil and then reduce to a simmer. Cook for 2-3 hours.
+        3. Season with salt and pepper to taste.
+    </CookingGuideText>
+</Recipe>

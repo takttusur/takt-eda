@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Recipe>
+    <Name>Homemade Onion Soup</Name>
+    <TimeToPrepareInSeconds>1800</TimeToPrepareInSeconds>
+    <TimeToCookInSeconds>3600</TimeToCookInSeconds>
+    <Ingredients>
+        <Ingredient name="Onions" unit="grams" amountPerPerson="500"/>
+        <Ingredient name="Butter" unit="grams" amountPerPerson="50"/>
+        <Ingredient name="Flour" unit="grams" amountPerPerson="30"/>
+        <Ingredient name="Beef Broth" unit="litres" amountPerPerson="1"/>
+        <Ingredient name="White Wine" unit="millilitres" amountPerPerson="100"/>
+        <Ingredient name="French Bread" unit="grams" amountPerPerson="100"/>
+        <Ingredient name="Grated Cheese" unit="grams" amountPerPerson="100"/>
+        <Ingredient name="Salt" unit="grams" amountPerPerson="10"/>
+        <Ingredient name="Pepper" unit="grams" amountPerPerson="5"/>
+    </Ingredients>
+    <CookingGuideText>
+        1. In a large pot, melt the butter and add the onions to cook until caramelized.
+        2. Sprinkle the flour over the onions, stir well, and continue to cook for about 2 minutes.
+        3. Add the beef broth and white wine. Bring to a boil, then reduce the heat to a simmer for about an hour.
+        4. To serve, place a piece of French bread in each bowl, ladle the soup over it, and top with the cheese.
+    </CookingGuideText>
+</Recipe>

@@ -61,6 +61,61 @@ public class Recipe : Entity
 		_ingredients.Add(RecipeIngredient.Create(ingredient, unit, amountPerPerson));
 	}
 
+
+	/// <summary>
+	/// Updates the recipe information.
+	/// </summary>
+	/// <param name="name">The new name of the recipe.</param>
+	/// <param name="timeToPrepareInSeconds">The new time to prepare the recipe in seconds.</param>
+	/// <param name="timeToCookInSeconds">The new time to cook the recipe in seconds.</param>
+	/// <param name="cookingGuideText">The new guide text for cooking the recipe.</param>
+	/// <exception cref="EntityValidationException">Throws when name parameter is empty or null.</exception>
+	public void UpdateRecipe(string name, int timeToPrepareInSeconds, int timeToCookInSeconds, string cookingGuideText)
+	{
+		if (string.IsNullOrWhiteSpace(name))
+			throw new EntityValidationException(nameof(Name), "cannot be empty");
+
+		bool isUpdated = false;
+
+		if (Name != name)
+		{
+			Name = name;
+			isUpdated = true;
+		}
+
+		if (TimeToPrepareInSeconds != timeToPrepareInSeconds)
+		{
+			TimeToPrepareInSeconds = timeToPrepareInSeconds;
+			isUpdated = true;
+		}
+
+		if (TimeToCookInSeconds != timeToCookInSeconds)
+		{
+			TimeToCookInSeconds = timeToCookInSeconds;
+			isUpdated = true;
+		}
+
+		if (CookingGuideText != cookingGuideText)
+		{
+			CookingGuideText = cookingGuideText;
+			isUpdated = true;
+		}
+
+		if (isUpdated)
+		{
+			Revision++;
+		}
+	}
+
+	/// <summary>
+	/// Creates new Recipe.
+	/// </summary>
+	/// <param name="name"></param>
+	/// <param name="timeToPrepareInSeconds"></param>
+	/// <param name="timeToCookInSeconds"></param>
+	/// <param name="cookingGuideText"></param>
+	/// <returns></returns>
+	/// <exception cref="EntityValidationException">If input data is not valid.</exception>
 	public static Recipe Create(string name, int timeToPrepareInSeconds = 0, int timeToCookInSeconds = 0,
 		string cookingGuideText = "")
 	{

@@ -12,6 +12,31 @@
         <Content Include="..\.dockerignore">
             <Link>.dockerignore</Link>
         </Content>
+        <None Remove="Resources\Recipe.xsd"/>
+        <Content Include="Resources\Recipe.xsd">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\DemoRecipes\ChickenSoup.xml">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\DemoRecipes\OnionSoup.xml">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\TaktTusur.Eda.Domain\TaktTusur.Eda.Domain.csproj"/>
+        <ProjectReference Include="..\TaktTusur.Eda.Infrastructure\TaktTusur.Eda.Infrastructure.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.3"/>
     </ItemGroup>
 
 </Project>
